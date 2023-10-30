@@ -124,3 +124,89 @@ let b=()=>{
 }
 b();
 
+//5. Return all the palindromes in an arry.
+//anonymous:
+let arr = ['level', 'hello', 'radar', 'world', 'deified', 'javascript','404','1561','15651','576'];
+let b = function findPalindromesInArray() {
+    const palindromes = arr.filter(str =>
+    {
+    const reversedStr = str.split('').reverse().join('');
+    return str === reversedStr;
+    }
+    );
+console.log(palindromes);
+}
+b();
+
+//IIFE:
+(function findPalindromesInArray(arr) {
+    const palindromes = arr.filter(str =>
+    {
+    const reversedStr = str.split('').reverse().join('');
+    return str === reversedStr;
+    });
+console.log(palindromes);
+})
+(['level', 'hello', 'radar', 'world', 'deified', 'javascript','404','1561','15651','576']);
+
+//arrow:
+let arr=['level', 'hello', 'radar', 'world', 'deified', 'javascript','404','1561','15651','576'];
+let b = () => {
+    const palindromes = arr.filter(str =>
+    {
+    const reversedStr = str.split('').reverse().join('');
+    return str === reversedStr;
+    });
+    return palindromes;
+    }
+console.log(b());
+
+// 6. Return median of two sorted arrays of the same size.
+function findMedianSortedArrays(nums1, nums2) {
+    const merge = [...nums1, ...nums2].sort();
+    const n = merge.length;
+    if (n % 2 === 0) {
+        const mid = n / 2;
+        return (merge[mid - 1] + merge[mid]) / 2;
+    } else {
+        const mid = Math.floor(n / 2);
+        return merge[mid];
+    }
+}
+const nums1 = [1, 3, 5];
+const nums2 = [2, 4];
+const median = findMedianSortedArrays(nums1, nums2);
+console.log(median);
+
+//7. Remove duplicates from an array.
+//anonymous:
+let arr = [1,1,2,3,4,3,5,8,8,7,9,4];
+let b=function(){
+        let dup = [...new Set(arr)];
+        console.log(dup);
+    }
+    b();
+
+//IIFE:
+(function(arr){
+    let d = [...new Set(arr)];
+    console.log(d);
+   })([1,1,2,3,4,3,5,8,8,7,9,4])
+
+//8. Rotate an array by k times.
+function rotateRight(arr, k) {
+    k = k % arr.length;
+    if (k < 0) {
+        k = arr.length + k; 
+    }
+    const rotatedArray = [];
+    for (let i = 0; i < arr.length; i++) {
+        const newIndex = (i + k) % arr.length;
+        rotatedArray[newIndex] = arr[i];
+    }
+    return rotatedArray;
+}
+const originalArray = [1, 2, 3, 4, 5];
+const k = 2; 
+const rotatedArray = rotateRight(originalArray, k);
+console.log(rotatedArray); 

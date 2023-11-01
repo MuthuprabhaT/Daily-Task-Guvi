@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reduce</title>
+</head>
+<body>
+    <script>
+        var xhr=new XMLHttpRequest();
+        xhr.open('GET',"https://restcountries.com/v3.1/all");
+        xhr.send();
+        xhr.onload=function (){
+    var countryDetails=JSON.parse(this.response);
+    let a=[];
+    let details=countryDetails.forEach(x => {
+        a.push(x.population)
+    });
+    let result=a.reduce(function(x,y){
+    return x + y;
+    });
+    console.log("Total Population of countries:"+ result);
+    };
+    </script>
+</body>
+</html>
